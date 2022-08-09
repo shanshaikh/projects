@@ -1,2 +1,2 @@
-# my_stuff
+# Projects
 Random stuff to work on 
