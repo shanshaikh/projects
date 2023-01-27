@@ -21,16 +21,23 @@ def getTime_S():
         label = Label(root, text="Invalid name: " + str(name_v))
         label.pack()
         return
-    val = BeautifulSoup(r.text, 'html.parser')
-    i = 0
-    for td in val.find_all("div"):
-            if (i == 53):
-                    temp = str(td.find_next_sibling("p",class_="sc-7bda52f2-2 kUueIO"))
-                    break
-            i+=1
-            td.find_next_sibling("p",class_="sc-7bda52f2-2 kUueIO")
-    temp2 = temp.split('>')
-    final = temp2[2][0:-3]
+        
+    # val = BeautifulSoup(r.text, 'html.parser')
+    # i = 0
+    # for td in val.find_all("div"):
+    #         if (i == 53):
+    #                 temp = str(td.find_next_sibling("p",class_="sc-7bda52f2-2 kUueIO"))
+    #                 break
+    #         i+=1
+    #         td.find_next_sibling("p",class_="sc-7bda52f2-2 kUueIO")
+    # temp2 = temp.split('>')
+    # final = temp2[2][0:-3]
+
+    full = r.text.split('Last online:')
+    full_s = full[1][0:50]
+    temp2 = full_s.split('>')
+    final = temp2[1][0:-3]
+    
     now = dt.datetime.now()
     final_t = dt.datetime.strptime(final, '%d-%m-%Y %H:%M')
     time_diff = now - final_t
