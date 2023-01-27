@@ -21,6 +21,7 @@ def getTime_S():
         label = Label(root, text="Invalid name: " + str(name_v))
         label.pack()
         return
+        
     # val = BeautifulSoup(r.text, 'html.parser')
     # i = 0
     # for td in val.find_all("div"):
@@ -36,6 +37,7 @@ def getTime_S():
     full_s = full[1][0:50]
     temp2 = full_s.split('>')
     final = temp2[1][0:-3]
+    
     now = dt.datetime.now()
     final_t = dt.datetime.strptime(final, '%d-%m-%Y %H:%M')
     time_diff = now - final_t
