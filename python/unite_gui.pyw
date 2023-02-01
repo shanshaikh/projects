@@ -14,6 +14,7 @@ name = Entry(root, width=50, borderwidth=5)
 name.pack()
 
 def getTime_S():
+    UTC_offset = -6
     url = 'http://www.uniteapi.dev/p/'
     name_v = name.get()
     url2 = url + name.get()
