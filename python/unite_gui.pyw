@@ -5,6 +5,7 @@ from bs4 import BeautifulSoup
 import time
 from tkinter import *
 import datetime as dt
+from datetime import timedelta
 
 root = Tk()
 root.title('Check last login time for Pokemon Unite')
@@ -13,6 +14,7 @@ name = Entry(root, width=50, borderwidth=5)
 name.pack()
 
 def getTime_S():
+    UTC_offset = -6
     url = 'http://www.uniteapi.dev/p/'
     name_v = name.get()
     url2 = url + name.get()
@@ -40,9 +42,10 @@ def getTime_S():
     
     now = dt.datetime.now()
     final_t = dt.datetime.strptime(final, '%d-%m-%Y %H:%M')
+    final_t = final_t + timedelta(hours=UTC_offset)
     time_diff = now - final_t
     out_string = 'Name: ' + str(name_v) +' -> Last online: ' + \
-                 str(final) + " :: " + str(time_diff.days) + " days"
+                 str(final_t) + " :: " + str(time_diff.days) + " days"
     label = Label(root, text=out_string)
     label.pack()
 
